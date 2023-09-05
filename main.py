@@ -88,9 +88,13 @@ def countreviews(start_date: str, end_date: str):
         }
         
         # Serializar el resultado como JSON con comillas dobles
-        return json.dumps(result)
+        # return json.dumps(result)
+        return result
     except Exception as e:
         return {"error": str(e)}
+
+from fastapi.responses import JSONResponse
+
 @app.get('/developer/{year}')
 def developer(year):
     try:
@@ -118,10 +122,14 @@ def developer(year):
             "Información de Desarrolladores": developer_info.to_dict(orient='records')
         }
 
-        # Serializar el resultado como JSON con comillas dobles y devolverlo como respuesta
-        return json.dumps(result), 200, {'Content-Type': 'application/json'}
+        # Devolver el resultado en formato JSON usando JSONResponse
+        return JSONResponse(content=result, status_code=200)
+
     except Exception as e:
-        return {"error": str(e)}
+        # Si ocurre una excepción, devolver un mensaje de error en formato JSON con código de estado 500 (Error interno del servidor)
+        error_data = {'error': str(e)}
+        return JSONResponse(content=error_data, status_code=500)
+
     
 # @app.get('/developer/{year}')
 # def developer(year):
