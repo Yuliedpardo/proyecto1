@@ -91,13 +91,7 @@ def countreviews(start_date: str, end_date: str):
     except Exception as e:
         return {"error": str(e)}
 
-from fastapi import FastAPI
-import pandas as pd
-import json
 
-app = FastAPI()
-
-# Tu DataFrame consulta5 y cualquier otra configuración aquí
 
 @app.get('/developer/{year}')
 def developer(year):
