@@ -141,6 +141,6 @@ Si deseas ver el video donde proporciono una visión general de este proyecto, s
 
 <div align="center">
   
-[![YouTube](https://studio.youtube.com/video/tfyXBkj6uNQ/edit)
+![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)](https://studio.youtube.com/video/tfyXBkj6uNQ/edit)
   
 </div>
