@@ -10,6 +10,8 @@ def hola():
 consulta1= pd.read_csv(r"consulta1.csv", low_memory=False)
 # Lee el archivo Parquet en un DataFrame de pandas
 Modelo = pd.read_parquet(r'Modelo.parquet')
+consulta2= pd.read_csv(r"consulta2.csv", low_memory=False)
+consulta5= pd.read_csv(r"consulta5.csv", low_memory=False)
 
 @app.get('/userdata/{user_id}')
 def userdata(user_id):
@@ -40,6 +42,46 @@ def recomendacion_juego(id_producto: int):
         error_data = {'error': 'No se encontraron recomendaciones para el ID proporcionado'}
         return JSONResponse(content=error_data, status_code=404)
     
+@app.get("/countreview/{start_date: str, end_date: str}")
+def countreviews(start_date: str, end_date: str):
+    # Convertir la columna 'porcentaje' a números flotantes, ignorando los valores no válidos
+    consulta2['porcentaje'] = pd.to_numeric(consulta2['porcentaje'], errors='coerce')
+    
+    # Filtrar el DataFrame para obtener las reseñas dentro del rango de fechas
+    filtered_df = consulta2[(consulta2['posted'] >= start_date) & (consulta2['posted'] <= end_date)]
+    
+    # Calcular la cantidad de usuarios que realizaron reseñas en ese período
+    users_count = len(filtered_df['user_id'].unique())
+    
+    # Calcular el porcentaje de recomendación promedio en base a las reseñas
+    recommendation_percentage = filtered_df['porcentaje'].mean()
+    
+    return {
+        "Cantidad de usuarios que realizaron reseñas": users_count,
+        "Porcentaje de recomendación promedio": recommendation_percentage
+    }
+
+@app.net('/developer/{year}')
+def developer(year):
+    # Paso 1: Filtrar las filas para el año especificado
+    filtered_output = consulta5[consulta5['release_year'] == year]
+
+    # Paso 2: Agrupar por desarrollador y calcular la cantidad total de ítems para cada uno
+    developer_items_count = filtered_output.groupby('developer')['item_id'].count().reset_index()
+
+    # Paso 3: Calcular la cantidad de ítems con precio igual a 0 (contenido gratuito) por desarrollador
+    developer_free_items_count = filtered_output[filtered_output['price'] == 0].groupby('developer')['item_id'].count().reset_index()
+
+    # Paso 4: Fusionar los DataFrames para tener la información completa
+    developer_info = pd.merge(developer_items_count, developer_free_items_count, on='developer', how='left')
+
+    # Paso 5: Calcular el porcentaje de contenido gratuito y reemplazar los NaN con 0%
+    developer_info['Contenido Free'] = (developer_info['item_id_y'] / developer_info['item_id_x'] * 100).fillna(0).astype(int).astype(str) + '%'
+
+    # Paso 6: Renombrar las columnas para obtener el formato de salida deseado
+    developer_info.rename(columns={'developer': 'Empresa Desarrolladora', 'item_id_x': 'Cantidad de Ítems', 'item_id_y': 'Contenido Free'}, inplace=True)
+
+    return year, developer_info
 # @app.get('/userdata/{user_id}')
 # def userdata(user_id):
 #     # leer archivos csv 
