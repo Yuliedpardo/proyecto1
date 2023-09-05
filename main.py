@@ -91,7 +91,7 @@ def countreviews(start_date: str, end_date: str):
         return json.dumps(result)
     except Exception as e:
         return {"error": str(e)}
-
+@app.get('/developer/{year}')
 def developer(year):
     try:
         # Paso 1: Filtrar las filas para el año especificado
