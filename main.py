@@ -29,7 +29,7 @@ def userdata(user_id):
     # Obtener la cantidad de items del usuario
     items_count = user_data['items_count'].values[0]
 
-    return money_spent, recommend_percentage, items_count
+    return {'cantidada gastado': money_spent, 'porcentaje de recomendacion':recommend_percentage , 'cantidad items':items_count}
 
 @app.get("/recomendacion_juego/{id_producto}")
 def recomendacion_juego(id_producto: int):
