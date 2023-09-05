@@ -16,9 +16,10 @@
 </details>
 
 
-# proyecto1 N 1
+# proyecto N 1
 
 Intro
+
 El desafío planteado en para este proyecto consiste en desarrollar un proceso de MLOs que incluya etapas de Ingeniería de Datos con su correspondiente Extraction, Transform and Load (ETL), pasando al Machine Learning, con Exploratory Data Analysis (EDA), junto con la exploración y entrenamiento de modelos; finalizando con el deployment tanto del modelo como de los datos del proceso ETL.
 
 ## Objetivo
@@ -134,3 +135,12 @@ Luego de completar la implementación de **main.py** y demás archivos que compo
 **5. Experiencia Render:** A través de Render, se llevaron a cabo los pasos necesarios para desplegar la API. Render proporcionó una plataforma eficiente y confiable para implementar aplicaciones, asegurando una experiencia de usuario optimizada y accesible. Render implementa la aplicación y genera un enlace para acceder a la [API en ejecución](https://primerproyecto-tgn9.onrender.com). **(Puedes agregar "/docs" al final del enlace para acceder a la documentación automática creada por FastAPI. Esto te brindará una interfaz interactiva y detallada que describe todos los endpoints, métodos y parámetros disponibles en la API de manera clara y concisa.)**
 
 *Con la culminación exitosa de estos pasos, la API que se había construido y desarrollado con dedicación y precisión ahora está completamente preparada y lista para ser consumida. La combinación de todas estas etapas ha permitido llevar el proyecto desde su fase inicial hasta un estado funcional y accesible, donde los usuarios pueden aprovechar plenamente las funciones y capacidades de la API de manera confiable y eficiente.*
+## Video
+
+Si deseas ver el video donde proporciono una visión general de este proyecto, simplemente haz clic en el logotipo de YouTube a continuación:
+
+<div align="center">
+  
+[![YouTube](https://youtu.be/tfyXBkj6uNQ)
+  
+</div>
