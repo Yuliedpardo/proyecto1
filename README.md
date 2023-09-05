@@ -141,6 +141,6 @@ Si deseas ver el video donde proporciono una visión general de este proyecto, s
 
 <div align="center">
   
-[![YouTube](https://youtu.be/tfyXBkj6uNQ)
+[![YouTube](https://studio.youtube.com/video/tfyXBkj6uNQ/edit)
   
 </div>
