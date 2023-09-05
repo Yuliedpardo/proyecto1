@@ -121,10 +121,10 @@ def developer(year):
             "Año": year,
             "Información de Desarrolladores": developer_info.to_dict(orient='records')
         }
-
+        return result
         # Devolver el resultado en formato JSON usando JSONResponse
-        return JSONResponse(content=result, status_code=200)
-
+        # return JSONResponse(content=result, status_code=200)
+       
     except Exception as e:
         # Si ocurre una excepción, devolver un mensaje de error en formato JSON con código de estado 500 (Error interno del servidor)
         error_data = {'error': str(e)}
