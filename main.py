@@ -119,7 +119,7 @@ def developer(year):
         # Crear un diccionario con los resultados
         result = {
             "Año": year,
-            "Información de Desarrolladores": developer_info.to_dict(orient='records')
+            "Información de Desarrolladores": developer_info.to_dict()
         }
         return result
         # Devolver el resultado en formato JSON usando JSONResponse
