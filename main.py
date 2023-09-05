@@ -61,7 +61,7 @@ def countreviews(start_date: str, end_date: str):
         "Porcentaje de recomendación promedio": recommendation_percentage
     }
 
-@app.net('/developer/{year}')
+@app.get('/developer/{year}')
 def developer(year):
     # Paso 1: Filtrar las filas para el año especificado
     filtered_output = consulta5[consulta5['release_year'] == year]
