@@ -94,7 +94,6 @@ def countreviews(start_date: str, end_date: str):
 
 
 
-@app.get('/developer/{year}')
 def developer(year):
     try:
         # Paso 1: Filtrar las filas para el año especificado
@@ -121,11 +120,10 @@ def developer(year):
             "Información de Desarrolladores": developer_info.to_dict(orient='records')
         }
 
-        # Serializar el resultado como JSON con comillas dobles
-        return json.dumps(result)
+        # Serializar el resultado como JSON con comillas dobles y devolverlo como respuesta
+        return json.dumps(result), 200, {'Content-Type': 'application/json'}
     except Exception as e:
         return {"error": str(e)}
-
 # @app.get('/developer/{year}')
 # def developer(year):
 #     # Paso 1: Filtrar las filas para el año especificado
